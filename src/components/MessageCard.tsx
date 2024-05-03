@@ -85,4 +85,4 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
             <CardContent></CardContent>
         </Card>
     );
-}
+};
