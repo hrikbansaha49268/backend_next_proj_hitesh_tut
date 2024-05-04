@@ -23,16 +23,16 @@ export async function GET(request: Request) {
             const userMessages = await UserModel.aggregate([
                 { $match: { _id: userId } },
                 { $unwind: '$messages' },
-                { $sort: { '$messages.createdAt': -1 } },
+                { $sort: { 'messages.createdAt': -1 } },
                 { $group: { _id: '$_id', messages: { $push: '$messages' } } }
             ]);
             if (!userMessages || userMessages.length === 0) {
                 return Response.json(
                     {
-                        success: false,
-                        message: "There are no messages"
+                        success: true,
+                        message: "There are no messages. Empty messages"
                     },
-                    { status: 404 }
+                    { status: 200 }
                 );
             } else {
                 return Response.json(

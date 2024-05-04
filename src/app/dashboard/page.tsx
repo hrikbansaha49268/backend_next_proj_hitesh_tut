@@ -64,7 +64,7 @@ const Dashboard = () => {
             if (refresh) {
                 toast({
                     title: "Refreshed messages",
-                    description: "Showing latest messages",
+                    description: messages.length == 0 ? "No messages yet" : "Showing latest messages",
                 });
             };
         } catch (error) {
@@ -111,7 +111,7 @@ const Dashboard = () => {
 
     const { username } = session?.user;
 
-    const profileUrl = `${window.location.protocol}//:${window.location.host}/u/${username}`;
+    const profileUrl = `${window.location.protocol}//${window.location.host}/u/${username}`;
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(profileUrl);
