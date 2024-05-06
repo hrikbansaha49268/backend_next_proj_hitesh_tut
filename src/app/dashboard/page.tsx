@@ -30,9 +30,9 @@ const Dashboard = () => {
 
     const { data: session } = useSession();
 
-    const form = useForm({
-        resolver: zodResolver(AcceptMsg)
-    });
+    console.log(session);
+
+    const form = useForm({ resolver: zodResolver(AcceptMsg) });
 
     const { register, watch, setValue } = form;
 
@@ -82,11 +82,15 @@ const Dashboard = () => {
     useEffect(() => {
         if (!session?.user || !session) {
             router.replace('/sign-in');
+        } else if (session?.user || session) {
+            router.replace('/dashboard');
+            fetchAcceptMessage();
+            fetchMessages();
         } else {
             fetchAcceptMessage();
             fetchMessages();
         };
-    }, [session, setValue, fetchAcceptMessage, fetchMessages]);
+    }, [!session, setValue, fetchAcceptMessage, fetchMessages]);
 
     const handleSwitchChange = async () => {
         try {
