@@ -1,19 +1,19 @@
 'use client';
-import { MessageCard } from "@/components/MessageCard";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Switch } from "@/components/ui/switch";
-import { useToast } from "@/components/ui/use-toast";
-import { Message } from "@/models/user.model";
-import { AcceptMsg } from "@/schemas/acceptMessageSchema";
-import { ApiResponse } from "@/types/Api.Response";
-import { zodResolver } from "@hookform/resolvers/zod";
-import axios, { AxiosError } from "axios";
-import { Loader2, RefreshCcw } from "lucide-react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import axios, { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { Message } from "@/models/user.model";
+import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { ApiResponse } from "@/types/Api.Response";
+import { Loader2, RefreshCcw } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Separator } from "@/components/ui/separator";
+import { MessageCard } from "@/components/MessageCard";
+import { useCallback, useEffect, useState } from "react";
+import { AcceptMsg } from "@/schemas/acceptMessageSchema";
 
 const Dashboard = () => {
 
@@ -109,9 +109,7 @@ const Dashboard = () => {
         };
     };
 
-    const { username } = session?.user;
-
-    const profileUrl = `${window.location.protocol}//${window.location.host}/u/${username}`;
+    const profileUrl = `${window.location.protocol}//${window.location.host}/u/${session?.user.username}`;
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(profileUrl);

@@ -13,7 +13,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="flex flex-col xl:flex-row justify-center items-center gap-x-4 h-[80vh] w-full container">
+    <main className="flex flex-col xl:flex-row justify-center items-center gap-x-4 w-full h-full container">
       <section className="w-1/2">
         <h1 className="text-3xl md:text-5xl font-bold">
           Dive into the World of Anonymous Feedback

@@ -23,7 +23,9 @@ export default function RootLayout({
       <AuthProvider>
         <body className={inter.className}>
           <Navbar />
-          {children}
+          <div className="h-screen">
+            {children}
+          </div>
           <Toaster />
           <Footer />
         </body>
